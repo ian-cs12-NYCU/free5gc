@@ -202,7 +202,7 @@ func TestPDUSessionSendData(t *testing.T) {
 	fmt.Printf("++++++++++++++++++++++++++++++ [UERANEM] Connect to UPF successfully +++++++++++++++++++++++++++++++\n\n\n\n\n")
 
 	// infinite loop to send UDP with GTP
-	for {
+	for i := 0; i < 3; i++ {
 		fmt.Printf("[UERANEM] Send GTP packet to UPF\n\n\n\n")
 		if err = sendGTP(upfConn, "helloworld"); err != nil {
 			fmt.Printf("[UERANEM] Fail to send GTP packet!\n")

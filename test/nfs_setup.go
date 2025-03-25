@@ -247,6 +247,10 @@ func NewChfStruct(ctx context.Context) app.NFstruct {
 	}
 }
 
+var nrfRegisterAddr = "10.200.200.3"
+var nrfBindAddr = "10.200.200.3"
+var nrfPort = "8000"
+
 func nrfConfig(oauth bool) error {
 	nrf_factory.NrfConfig = &nrf_factory.Config{
 		Info: &nrf_factory.Info{
@@ -258,8 +262,8 @@ func nrfConfig(oauth bool) error {
 			MongoDBUrl:  "mongodb://127.0.0.1:27017",
 			Sbi: &nrf_factory.Sbi{
 				Scheme:       "http",
-				RegisterIPv4: "127.0.0.10",
-				BindingIPv4:  "127.0.0.10",
+				RegisterIPv4: nrfRegisterAddr,
+				BindingIPv4:  nrfBindAddr,
 				Port:         8000,
 				Cert: &nrf_factory.Cert{
 					Pem: "../cert/nrf.pem",
@@ -362,7 +366,7 @@ func amfConfig(testID TestId) error {
 			SupportDnnList: []string{
 				"internet",
 			},
-			NrfUri:     "http://127.0.0.10:8000",
+			NrfUri:     "http://" + nrfBindAddr + ":" + nrfPort,
 			NrfCertPem: "../cert/nrf.pem",
 			Security: &amf_factory.Security{
 				IntegrityOrder: integrityOrder,
@@ -573,7 +577,7 @@ func smfConfig(testID TestId) error {
 				ExpireTime:    5 * time.Second,
 				MaxRetryTimes: 2,
 			},
-			NrfUri:       "http://127.0.0.10:8000",
+			NrfUri:       "http://" + nrfBindAddr + ":" + nrfPort,
 			NrfCertPem:   "../cert/nrf.pem",
 			UrrPeriod:    30,
 			UrrThreshold: 10000,
@@ -725,7 +729,7 @@ func udrConfig() error {
 				Name: "free5gc",
 				Url:  "mongodb://localhost:27017",
 			},
-			NrfUri:     "http://127.0.0.10:8000",
+			NrfUri:     "http://" + nrfBindAddr + ":" + nrfPort,
 			NrfCertPem: "../cert/nrf.pem",
 		},
 		Logger: &udr_factory.Logger{
@@ -762,7 +766,7 @@ func pcfConfig() error {
 			},
 			TimeFormat:      "2019-01-02 15:04:05",
 			DefaultBdtRefId: "BdtPolicyId-",
-			NrfUri:          "http://127.0.0.10:8000",
+			NrfUri:          "http://" + nrfBindAddr + ":" + nrfPort,
 			NrfCertPem:      "../cert/nrf.pem",
 			ServiceList: []pcf_factory.Service{{
 				ServiceName: "npcf-am-policy-control",
@@ -823,7 +827,7 @@ func udmConfig() error {
 					Key: "cert/udm.key",
 				},
 			},
-			NrfUri:     "http://127.0.0.10:8000",
+			NrfUri:     "http://" + nrfBindAddr + ":" + nrfPort,
 			NrfCertPem: "../cert/nrf.pem",
 			SuciProfiles: []suci.SuciProfile{
 				{
@@ -876,7 +880,7 @@ func nssfConfig() error {
 				"nnssf-nsselection",
 				"nnssf-nssaiavailability",
 			},
-			NrfUri:     "http://127.0.0.10:8000",
+			NrfUri:     "http://" + nrfBindAddr + ":" + nrfPort,
 			NrfCertPem: "../cert/nrf.pem",
 			SupportedPlmnList: []models.PlmnId{{
 				Mcc: "208",
@@ -1361,7 +1365,7 @@ func ausfConfig() error {
 			ServiceNameList: []string{
 				"nausf-auth",
 			},
-			NrfUri:     "http://127.0.0.10:8000",
+			NrfUri:     "http://" + nrfBindAddr + ":" + nrfPort,
 			NrfCertPem: "../cert/nrf.pem",
 			PlmnSupportList: []models.PlmnId{{
 				Mcc: "208",
@@ -1404,7 +1408,7 @@ func chfConfig() error {
 					Key: "../cert/chf.key",
 				},
 			},
-			NrfUri:     "http://127.0.0.10:8000",
+			NrfUri:     "http://" + nrfBindAddr + ":" + nrfPort,
 			NrfCertPem: "../cert/nrf.pem",
 			ServiceNameList: []string{
 				"nchf-convergedcharging",

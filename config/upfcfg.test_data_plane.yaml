@@ -27,13 +27,13 @@ dnnList:
 # SBI Configuration
 sbi:
   scheme: http # the protocol for sbi (http or https)
-  registerIp: 127.0.0.8 # IP used to register to NRF, support IPv4 only
-  bindingIp: 127.0.0.8  # IP used to bind the service, support IPv4 only
+  registerIp: 10.200.200.103 # IP used to register to NRF, support IPv4 only
+  bindingIp: 10.200.200.103  # IP used to bind the service, support IPv4 only
   port: 8000 # port used to bind the service
   tls: # the local path of TLS key
     pem: cert/upf.pem # AMF TLS Certificate
     key: cert/upf.key # AMF TLS Private key
-  nrfUri: http://127.0.0.10:8000 # NRF URI
+  nrfUri: http://10.200.200.3:8000 # NRF URI
 
 # TODO:
 # Configuration Drift Issue:
