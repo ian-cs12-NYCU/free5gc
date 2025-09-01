@@ -48,7 +48,10 @@ sbi:
 # Configuration Drift Issue:
 # Hardcoding the interface name in the configuration file can lead to inconsistencies between the configuration and the actual GTP5G interface. If GTP5G changes the interface name, the configuration will become invalid.
 ebpf:
-  interfaceName: upfgtp
+  enable: true
+  ul_interfaceName: upfgtp
+  dl_interfaceName: upfgtp
+  debugmode: true
 
 # Logging Configuration
 # Controls logging level and output for the UPF.
